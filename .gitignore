@@ -12,12 +12,12 @@ jspm_packages/
 # production
 /build
 
-# misc
-.DS_Store
-.env.local
+# dotenv environment variable files
+.env
 .env.development.local
 .env.test.local
 .env.production.local
+.env.local
 
 .idea
 

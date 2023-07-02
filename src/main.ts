@@ -7,6 +7,7 @@ import { version } from '../package.json';
 import {checkForUpdate} from "./utils/updateChecker";
 import {logger} from "./logger";
 import chalk from "chalk";
+import {ConfigCommand} from "./commands/config.command";
 
 const program = new Command();
 
@@ -16,9 +17,10 @@ program
 
 program
     .command('config')
-    .description(`Configure your prwizard with Github token & OpenAI API key:`)
-    .action(() => {
-        logger.info(chalk.bgGreenBright('Hi'));
+    .description(`Configure your prwizard with Github token & OpenAI API key.`)
+    .action(async () => {
+        const configCommand = new ConfigCommand({ commandName: 'config' });
+        await configCommand.run();
     });
 
 program.parseAsync(process.argv).then(() => {
