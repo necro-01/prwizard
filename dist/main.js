@@ -8,7 +8,6 @@ const commander_1 = require("commander");
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const package_json_1 = require("../package.json");
-const updateChecker_1 = require("./utils/updateChecker");
 const logger_1 = require("./logger");
 const chalk_1 = __importDefault(require("chalk"));
 const program = new commander_1.Command();
@@ -22,7 +21,7 @@ program
     logger_1.logger.info(chalk_1.default.bgGreenBright('Hi'));
 });
 program.parseAsync(process.argv).then(() => {
-    (0, updateChecker_1.checkForUpdate)(package_json_1.version);
+    // checkForUpdate(version);
 });
 if (!process.argv.slice(2).length) {
     program.outputHelp();

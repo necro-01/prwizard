@@ -22,7 +22,7 @@ program
     });
 
 program.parseAsync(process.argv).then(() => {
-    checkForUpdate(version);
+    // checkForUpdate(version);
 });
 
 if (!process.argv.slice(2).length) {
