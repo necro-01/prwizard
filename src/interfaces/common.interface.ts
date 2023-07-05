@@ -8,6 +8,12 @@ export interface Config {
     llm: LLMConfig;
 }
 
+export enum CommitAction {
+    COMMIT = 'commit',
+    REPLACE = 'replace',
+    SKIP = 'skip',
+}
+
 export interface CommandConfig {
     commandName: string;
 }

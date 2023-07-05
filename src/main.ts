@@ -10,6 +10,7 @@ import chalk from "chalk";
 import { ConfigCommand } from "./commands/config.command";
 import { ReviewArgs } from "./interfaces";
 import { ReviewCommand } from "./commands/review.command";
+import {CommitCommand} from "./commands/commit.command";
 
 const program = new Command();
 
@@ -33,6 +34,14 @@ program
     .action(async (localReviewArgs: ReviewArgs) => {
         const localReviewCommand = new ReviewCommand({ commandName: 'local-review' });
         await localReviewCommand.run(localReviewArgs);
+    });
+
+program
+    .command('commit')
+    .description('Autogenerate commit message & commit selected files.')
+    .action(async () => {
+        const commitCommand = new CommitCommand({ commandName: 'commit' });
+        await commitCommand.run();
     });
 
 program.parseAsync(process.argv).then(() => {
