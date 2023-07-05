@@ -16,7 +16,7 @@ export interface GitDiff {
     diff: string;
 }
 
-export interface LocalReviewArgs {
+export interface ReviewArgs {
     directory: string;
     filename: string;
 }
