@@ -8,9 +8,10 @@ import { checkForUpdate } from "./utils/updateChecker";
 import { logger } from "./logger";
 import chalk from "chalk";
 import { ConfigCommand } from "./commands/config.command";
-import { ReviewArgs } from "./interfaces";
+import {PullRequestReviewArgs, ReviewArgs} from "./interfaces";
 import { ReviewCommand } from "./commands/review.command";
-import {CommitCommand} from "./commands/commit.command";
+import { CommitCommand } from "./commands/commit.command";
+import { PullRequestReviewCommand } from "./commands/pr-review.command";
 
 const program = new Command();
 
@@ -24,6 +25,14 @@ program
     .action(async () => {
         const configCommand = new ConfigCommand({ commandName: 'config' });
         await configCommand.run();
+    });
+
+program
+    .command('pr <repository> <pull_request>')
+    .description(`Review a pull request.`)
+    .action(async (pullRequestReviewArgs: PullRequestReviewArgs) => {
+        const pullRequestReviewCommand = new PullRequestReviewCommand({ commandName: 'pr-review' });
+        await pullRequestReviewCommand.run(pullRequestReviewArgs);
     });
 
 program

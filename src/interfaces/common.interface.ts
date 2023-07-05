@@ -27,6 +27,11 @@ export interface ReviewArgs {
     filename: string;
 }
 
+export interface PullRequestReviewArgs {
+    fullRepository: string;
+    pullRequest: string;
+}
+
 export interface Prompt {
     system: string;
     user: string;
