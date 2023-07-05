@@ -10,8 +10,9 @@ const chalk_1 = __importDefault(require("chalk"));
 const checkForUpdate = (version) => {
     try {
         const latestVersion = (0, child_process_1.execSync)('npm show prwizard version').toString().trim();
+        // const latestVersion = '1.1';
         if (latestVersion !== version) {
-            logger_1.logger.info(chalk_1.default.yellow(`\n${latestVersion} :: New version of prwizard is available. Consider updating!`));
+            logger_1.logger.info(chalk_1.default.yellowBright(`\n${latestVersion} -> New version of prwizard is available. Consider updating!`));
         }
     }
     catch (error) {
