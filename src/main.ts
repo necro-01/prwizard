@@ -4,9 +4,6 @@ import { Command } from 'commander';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { version } from '../package.json';
-import { checkForUpdate } from "./utils/updateChecker";
-import { logger } from "./logger";
-import chalk from "chalk";
 import { ConfigCommand } from "./commands/config.command";
 import {PullRequestReviewArgs, ReviewArgs} from "./interfaces";
 import { ReviewCommand } from "./commands/review.command";
@@ -17,7 +14,7 @@ const program = new Command();
 
 program
     .version(version || '0.0.0')
-    .description(`Elevating Your Development Workflow with PRWizard\'s Review Magic!`);
+    .description(`Elevating Your Development Workflow with PRWizard's Review Magic!`);
 
 program
     .command('config')
