@@ -15,12 +15,13 @@ export abstract class BaseCommand<T> {
 
     protected abstract _run(args?: T): Promise<void>;
 
+    // Wrapper function for _run(), which will be implemented by .command.ts classes. Run() will be called by commands in main.ts
     public async run(args?: T): Promise<void> {
         try {
             await this._run(args);
         } catch (error: any) {
             this.spinner.stop();
-            logger.error(chalk.bgRedBright(error.message));
+            logger.error(chalk.bgRed(error.message));
             process.exit(1);
         }
     }

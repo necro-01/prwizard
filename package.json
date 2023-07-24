@@ -1,6 +1,6 @@
 {
   "name": "prwizard",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Elevating Your Development Workflow with PRWizard's Review Magic!",
   "main": "dist/main.js",
   "bin": {
@@ -11,6 +11,10 @@
     "lint": "eslint \"src/**/*.ts\" --fix",
     "build": "tsc",
     "build:dev": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/necro-01/prwizard.git"
   },
   "keywords": [
     "git",

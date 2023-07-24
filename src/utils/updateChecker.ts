@@ -1,5 +1,5 @@
-import {execSync} from "child_process";
-import {logger} from "../logger";
+import { execSync } from "child_process";
+import { logger } from "../logger";
 import chalk from "chalk";
 
 export const checkForUpdate = (version: string) => {
@@ -7,10 +7,10 @@ export const checkForUpdate = (version: string) => {
         const latestVersion = execSync('npm show prwizard version').toString().trim();
         if (latestVersion !== version) {
             logger.info(
-                chalk.yellow(`\n${latestVersion} :: New version of prwizard is available. Consider updating!`,),
+                chalk.yellowBright(`\n${latestVersion} -> New version of prwizard is available. Consider updating!`,),
             );
         }
     } catch (error) {
-        logger.error(chalk.red(`\nFailed to check for updates.`));
+        logger.error(chalk.bgRed.whiteBright(`\nFailed to check for updates.`));
     }
 };

@@ -27,13 +27,14 @@ export class OpenAiService {
         const openAIConfiguration = new Configuration({
             apiKey: config.openaiSecretApiKey,
         });
-        const openaiClient = new OpenAIApi(openAIConfiguration);
 
         const chatCompletionRequest: CreateChatCompletionRequest = {
             model: config.openaiModel,
             temperature: config.openaiTemperature,
             messages: messages,
         };
+
+        const openaiClient = new OpenAIApi(openAIConfiguration);
 
         let result;
         try {

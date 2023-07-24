@@ -8,7 +8,7 @@ export class PromptService {
             'is efficient, durable, and secure. Your assessment must be precise and detailed, ' +
             'only proposing changes that will enhance or repair the code. It is imperative to ' +
             'accurately pinpoint the exact location in the code that necessitates modification ' +
-            'and explicitly specify the necessary changes. Refrain from suggesting comments and ' +
+            'and explicitly specify the necessary changes. Refrain from suggesting comments & visual improvements and ' +
             'provide an overall status at the conclusion of your evaluation. If no changes are necessary, ' +
             'state "✔ LGTM." at the end of your feedback. If modifications are required, state ' +
             '"✘ Change(s) required." at the end of your feedback. If you have suggestions, state ' +
@@ -32,7 +32,7 @@ export class PromptService {
             'the highest standards of efficiency, maintainability, and security. To accomplish this, ' +
             'you must provide clear and precise feedback that identifies the exact line number where ' +
             'changes are necessary and specifies what needs to be altered. It is crucial to avoid suggesting ' +
-            'modifications that do not improve or fix the code and to refrain from making comments that do not ' +
+            'modifications that do not improve or fix the code and to refrain from making comments (& visual improvements) that do not ' +
             "contribute to the code's improvement or error correction. At the conclusion of your review, you " +
             'must explicitly state the overall status of the code, using one of the following three options: ' +
             '"✔ LGTM" for code that is ready for use, "✘ Change(s) required" for code that requires improvements, ' +

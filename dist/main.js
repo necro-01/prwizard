@@ -12,7 +12,7 @@ const pr_review_command_1 = require("./commands/pr-review.command");
 const program = new commander_1.Command();
 program
     .version(package_json_1.version || '0.0.0')
-    .description(`Elevating Your Development Workflow with PRWizard\'s Review Magic!`);
+    .description(`Elevating Your Development Workflow with PRWizard's Review Magic!`);
 program
     .command('config')
     .description(`Configure your prwizard with Github token & OpenAI API key.`)

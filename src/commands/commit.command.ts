@@ -35,7 +35,7 @@ export class CommitCommand extends BaseCommand<ReviewArgs> {
         filenames: string[],
         gitConfig: GitConfig,
     ): Promise<GitDiff> {
-        logger.info('Reviewing local changes for commit');
+        logger.info('Reviewing local changes for commit...');
         return GitLocalService.getFilesDiff(filenames, {
             ignorePatterns: gitConfig.ignorePatterns,
         });

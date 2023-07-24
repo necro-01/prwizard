@@ -5,10 +5,11 @@ import { Command } from 'commander';
 // @ts-ignore
 import { version } from '../package.json';
 import { ConfigCommand } from "./commands/config.command";
-import {PullRequestReviewArgs, ReviewArgs} from "./interfaces";
+import { PullRequestReviewArgs, ReviewArgs } from "./interfaces";
 import { ReviewCommand } from "./commands/review.command";
 import { CommitCommand } from "./commands/commit.command";
 import { PullRequestReviewCommand } from "./commands/pr-review.command";
+import { checkForUpdate } from "./utils/updateChecker";
 
 const program = new Command();
 
@@ -18,7 +19,7 @@ program
 
 program
     .command('config')
-    .description(`Configure your prwizard with Github token & OpenAI API key.`)
+    .description(`Configure your prwizard with Github token & OpenAI API key`)
     .action(async () => {
         const configCommand = new ConfigCommand({ commandName: 'config' });
         await configCommand.run();
@@ -26,7 +27,7 @@ program
 
 program
     .command('pr <repository> <pull_request>')
-    .description(`Review a pull request.`)
+    .description(`Review a pull request`)
     .action(async (pullRequestReviewArgs: PullRequestReviewArgs) => {
         const pullRequestReviewCommand = new PullRequestReviewCommand({ commandName: 'pr-review' });
         await pullRequestReviewCommand.run(pullRequestReviewArgs);
@@ -34,7 +35,7 @@ program
 
 program
     .command('review')
-    .description(`Review your local changes or a specific file.`)
+    .description(`Review your local changes or a specific file`)
     .option('-f, --filename <filename>', 'filename to review', '')
     .option('-d, --directory <directory>', 'directory of the file to review', '.')
     .action(async (localReviewArgs: ReviewArgs) => {
@@ -44,14 +45,14 @@ program
 
 program
     .command('commit')
-    .description('Autogenerate commit message & commit selected files.')
+    .description('Autogenerate commit message & commit selected files')
     .action(async () => {
         const commitCommand = new CommitCommand({ commandName: 'commit' });
         await commitCommand.run();
     });
 
 program.parseAsync(process.argv).then(() => {
-    // checkForUpdate(version);
+    checkForUpdate(version);
 });
 
 if (!process.argv.slice(2).length) {

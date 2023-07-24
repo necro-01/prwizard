@@ -4,6 +4,7 @@ import os from 'os';
 
 import merge from 'lodash.merge';
 import { Config } from '../interfaces';
+import chalk from "chalk";
 
 const CONFIG_FILENAME = 'prwizard.json';
 
@@ -35,8 +36,8 @@ class ConfigurationError extends Error {
 }
 
 export class ConfigService {
+    // Determine the path to the configuration file based on the environment variables (.env)
     private static getConfigFilePath(): string {
-    // Determine the path to the configuration file based on the environment (.env)
         const configDir =
             process.env.NODE_ENV === 'development'
                 ? process.cwd()
@@ -44,8 +45,8 @@ export class ConfigService {
         return path.join(configDir, CONFIG_FILENAME);
     }
 
-    private static checkEnvForConfiguration(): Config {
     // Check environment variables for configuration setting and create a configuration object from them
+    private static checkEnvForConfiguration(): Config {
         const envConfig = {
             git: {
                 ignorePatterns: process.env.GIT_IGNORE_PATTERNS?.split(','),
@@ -87,7 +88,7 @@ export class ConfigService {
                 fileConfig = JSON.parse(fs.readFileSync(this.getConfigFilePath(), 'utf-8'));
             } catch (err) {
                 throw new ConfigurationError(
-                    'Unable to parse the configuration file. Please ensure that the file is a valid JSON.',
+                    chalk.bgRed.whiteBright('Unable to parse the configuration file. Please ensure that the file is a valid JSON.'),
                 );
             }
         }
@@ -97,7 +98,7 @@ export class ConfigService {
     private static validateTemperature(temperature: number): void {
         if (!(temperature >= 0.0 && temperature <= 2.0)) {
             throw new ConfigurationError(
-                'Invalid temperature value. It must be a value between 0 and 2 (inclusive).',
+                chalk.bgRed.whiteBright('Invalid temperature value. It must be a value between 0 and 2 (inclusive).'),
             );
         }
     }
@@ -125,6 +126,7 @@ export class ConfigService {
 
     static load(): Config {
         // Load the configuration either from the config file or environment variables (.env)
+        // console.log(this.checkConfigFileExists());
         const config = this.checkConfigFileExists()
             ? this.checkFileForConfiguration()
             : this.checkEnvForConfiguration();

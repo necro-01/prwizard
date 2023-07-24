@@ -1,6 +1,5 @@
 import {createLogger, format, info, transports} from 'winston';
-import chalk, {level} from "chalk";
-import {log} from "util";
+import chalk from "chalk";
 
 export const logger = createLogger({
     level: 'info',
