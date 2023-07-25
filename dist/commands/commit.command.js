@@ -94,7 +94,7 @@ class CommitCommand extends base_command_1.BaseCommand {
         while (continueToCommit) {
             const { selectedFileNames, unselectedFileNames } = await this.selectChangedFiles();
             const diff = await this.filesDiff(selectedFileNames, gitConfig);
-            logger_1.logger.info('Generating commit message.');
+            logger_1.logger.info('Generating commit message...');
             const commitHistory = await git_local_service_1.GitLocalService.getCommitHistory(gitConfig.maxCommitHistory);
             this.spinner.text = 'Generating commit message...';
             this.spinner.start();
