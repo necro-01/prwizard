@@ -26,7 +26,7 @@ class CommitCommand extends base_command_1.BaseCommand {
     }
     // Retrieve the diff for the changed files
     async filesDiff(filenames, gitConfig) {
-        logger_1.logger.info('Reviewing local changes for commit');
+        logger_1.logger.info('Reviewing local changes for commit...');
         return git_local_service_1.GitLocalService.getFilesDiff(filenames, {
             ignorePatterns: gitConfig.ignorePatterns,
         });

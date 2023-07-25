@@ -12,6 +12,7 @@ class BaseCommand {
         this.config = config;
         this.spinner = (0, ora_1.default)();
     }
+    // Wrapper function for _run(), which will be implemented by .command.ts classes. Run() will be called by commands in main.ts
     async run(args) {
         try {
             await this._run(args);

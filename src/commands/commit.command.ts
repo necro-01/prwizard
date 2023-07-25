@@ -129,7 +129,7 @@ export class CommitCommand extends BaseCommand<ReviewArgs> {
                 await this.selectChangedFiles();
             const diff = await this.filesDiff(selectedFileNames, gitConfig);
 
-            logger.info('Generating commit message.');
+            logger.info('Generating commit message...');
 
             const commitHistory = await GitLocalService.getCommitHistory(
                 gitConfig.maxCommitHistory,

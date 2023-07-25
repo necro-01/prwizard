@@ -71,6 +71,12 @@ export class FileService {
     public static async selectFilesToCommit(
         fileChanges: GitFileChange[],
     ): Promise<GitFileChange[]> {
+        if(fileChanges.length === 0){
+            throw new FileServiceError(
+                chalk.bgRed.whiteBright(`No changes detected in any file.`),
+            );
+        }
+
         const response = await prompts({
             type: 'multiselect',
             name: 'files',

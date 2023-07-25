@@ -55,6 +55,9 @@ class FileService {
     }
     // Prompt the user to select files to commit from a list of GitFileChange object
     static async selectFilesToCommit(fileChanges) {
+        if (fileChanges.length === 0) {
+            throw new FileServiceError(chalk_1.default.bgRed.whiteBright(`No changes detected in any file.`));
+        }
         const response = await (0, prompts_1.default)({
             type: 'multiselect',
             name: 'files',

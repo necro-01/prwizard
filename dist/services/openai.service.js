@@ -21,12 +21,12 @@ class OpenAiService {
         const openAIConfiguration = new openai_1.Configuration({
             apiKey: config.openaiSecretApiKey,
         });
-        const openaiClient = new openai_1.OpenAIApi(openAIConfiguration);
         const chatCompletionRequest = {
             model: config.openaiModel,
             temperature: config.openaiTemperature,
             messages: messages,
         };
+        const openaiClient = new openai_1.OpenAIApi(openAIConfiguration);
         let result;
         try {
             // Call the OpenAI API to get a chat completion response

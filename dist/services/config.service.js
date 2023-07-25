@@ -36,15 +36,15 @@ class ConfigurationError extends Error {
     }
 }
 class ConfigService {
+    // Determine the path to the configuration file based on the environment variables (.env)
     static getConfigFilePath() {
-        // Determine the path to the configuration file based on the environment (.env)
         const configDir = process.env.NODE_ENV === 'development'
             ? process.cwd()
             : path_1.default.join(os_1.default.homedir(), '.prwizard');
         return path_1.default.join(configDir, CONFIG_FILENAME);
     }
+    // Check environment variables for configuration setting and create a configuration object from them
     static checkEnvForConfiguration() {
-        // Check environment variables for configuration setting and create a configuration object from them
         const envConfig = {
             git: {
                 ignorePatterns: process.env.GIT_IGNORE_PATTERNS?.split(','),
@@ -108,7 +108,7 @@ class ConfigService {
     }
     static load() {
         // Load the configuration either from the config file or environment variables (.env)
-        console.log(this.checkConfigFileExists());
+        // console.log(this.checkConfigFileExists());
         const config = this.checkConfigFileExists()
             ? this.checkFileForConfiguration()
             : this.checkEnvForConfiguration();
