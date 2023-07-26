@@ -23,7 +23,6 @@ export class PullRequestReviewCommand extends BaseCommand<PullRequestReviewArgs>
             fullRepository,
             pullRequest,
         );
-
         logger.info(`Reviewing ${ pullRequestUrl }.`);
 
         // Retrieve the diff (changes) of the pull request from GitHub
