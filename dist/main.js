@@ -24,9 +24,9 @@ program
 program
     .command('pr <repository> <pull_request>')
     .description(`Review a pull request`)
-    .action(async (pullRequestReviewArgs) => {
+    .action(async (repository, pullRequest) => {
     const pullRequestReviewCommand = new pr_review_command_1.PullRequestReviewCommand({ commandName: 'pr-review' });
-    await pullRequestReviewCommand.run(pullRequestReviewArgs);
+    await pullRequestReviewCommand.run({ fullRepository: repository, pullRequest });
 });
 program
     .command('review')

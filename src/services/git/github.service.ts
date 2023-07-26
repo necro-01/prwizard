@@ -114,8 +114,6 @@ export class GithubService {
         fullRepositoryPath: string,
         pullRequest: string,
     ): string {
-        console.log(fullRepositoryPath);
-        console.log(pullRequest);
         return `https://github.com/${fullRepositoryPath}/pull/${pullRequest}`;
     }
 }

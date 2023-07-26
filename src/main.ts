@@ -5,7 +5,7 @@ import { Command } from 'commander';
 // @ts-ignore
 import { version } from '../package.json';
 import { ConfigCommand } from "./commands/config.command";
-import { PullRequestReviewArgs, ReviewArgs } from "./interfaces";
+import { ReviewArgs } from "./interfaces";
 import { ReviewCommand } from "./commands/review.command";
 import { CommitCommand } from "./commands/commit.command";
 import { PullRequestReviewCommand } from "./commands/pr-review.command";
@@ -28,9 +28,9 @@ program
 program
     .command('pr <repository> <pull_request>')
     .description(`Review a pull request`)
-    .action(async (pullRequestReviewArgs: PullRequestReviewArgs) => {
+    .action(async (repository: string, pullRequest: string) => {
         const pullRequestReviewCommand = new PullRequestReviewCommand({ commandName: 'pr-review' });
-        await pullRequestReviewCommand.run(pullRequestReviewArgs);
+        await pullRequestReviewCommand.run({fullRepository: repository, pullRequest});
     });
 
 program
