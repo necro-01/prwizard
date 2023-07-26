@@ -75,6 +75,8 @@ class GithubService {
     }
     // Generate the URL for a specific pull request in the GitHub repository
     static getPullRequestUrl(fullRepositoryPath, pullRequest) {
+        console.log(fullRepositoryPath);
+        console.log(pullRequest);
         return `https://github.com/${fullRepositoryPath}/pull/${pullRequest}`;
     }
 }

@@ -15,6 +15,8 @@ class PullRequestReviewCommand extends base_command_1.BaseCommand {
         const config = config_service_1.ConfigService.load();
         const openAIConfig = config.llm.openai;
         const pullRequestUrl = github_service_1.GithubService.getPullRequestUrl(fullRepository, pullRequest);
+        console.log(fullRepository);
+        console.log(pullRequest);
         logger_1.logger.info(`Reviewing ${pullRequestUrl}.`);
         // Retrieve the diff (changes) of the pull request from GitHub
         const pullRequestDiff = await github_service_1.GithubService.getPRDiff(config.github, config.git, fullRepository, pullRequest);
